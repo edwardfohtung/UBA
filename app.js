@@ -60,6 +60,29 @@ async function createAccount(account) {
   }
 }
 
+async function login() {
+  const loginForm = document.getElementById('loginForm')
+  const user = loginForm.user.value;
+  const data = await getAccount(user);
+
+  if (data.error) {
+    return console.log('loginError', data.error);
+  }
+
+  account = data;
+  navigate('/dashboard');
+}
+
+async function getAccount(user) {
+  try {
+    const response = await fetch('//localhost:5000/api/accounts/' + encodeURIComponent(user));
+    return await response.json();
+  } catch (error) {
+    return { error: error.message || 'Unknown error' };
+  }
+}
+
+
 
  window.onpopstate = () => updateRoute();
  updateRoute();
