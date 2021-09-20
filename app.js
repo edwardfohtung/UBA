@@ -4,6 +4,8 @@ const routes ={
   '/dashboard': {templateId: 'dashboard'},
 };
 
+let account = null
+
 function onLinkClick(event){
   event.preventDefault();
   navigate(event.target.href);
@@ -12,10 +14,11 @@ function onLinkClick(event){
 function updateRoute (){
   let path = window.location.pathname 
   let route = routes[path]
-
-  if(!route) {
-    return navigate("/login")
+  
+  if (!route) {
+    return navigate('/login');
   }
+
 
   const template = document.getElementById(route.templateId);
   const view = template.content.cloneNode(true);
@@ -42,6 +45,10 @@ async function register() {
   }
 
   console.log('Account created!', result);
+
+  account = result;
+  navigate('/dashboard');
+
 }
 
 //POST /api/accounts/
@@ -80,6 +87,15 @@ async function getAccount(user) {
   } catch (error) {
     return { error: error.message || 'Unknown error' };
   }
+}
+function updateElement(id, text) {
+  const element = document.getElementById(id);
+  element.textContent = text;
+
+  if (data.error) {
+    return updateElement('loginError', data.error);
+  }
+  
 }
 
 
