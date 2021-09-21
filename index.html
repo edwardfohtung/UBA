@@ -58,32 +58,28 @@
           <a href="/login" onclick="onLinkClick(event)">Logout</a>
         </header>
         <section>
-        Balance: <span id="balance"></span><span id="currency"></span> $100
-        <h2 id="description"></h2> Test Account
+        Balance: <span id="balance"></span><span id="currency"></span>
+        <h2 id="description"></h2>
         </section>
         <section>
           <h2>Transactions</h2>
             <table>
               <thead>
                 <tr>
-                 <th>Date</th> 2021-10-01
-                 <th>Object</th> Pocket Money
-                 <th>Amount</th> 50
-               </tr>
-               <tr>
-                <th>Date</th> 2021-10-02
-                <th>Object</th> Book
-                <th>Amount</th> -10
-              </tr>
-              <tr>
-                <th>Date</th> 2021-10-03
-                <th>Object</th> Sandwich
-                <th>Amount</th> -5
-              </tr>
+                 <th>Date</th> 
+                 <th>Object</th> 
+                 <th>Amount</th> 
               </thead>
-          <tbody></tbody>
+              <tbody id="transactions"></tbody>
             </table>
          </section>
+      </template>
+      <template id="transaction">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
       </template>
      </div>  
      
